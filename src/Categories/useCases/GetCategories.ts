@@ -7,7 +7,7 @@ export default class GetCategories {
         private readonly categoriesRepository: CategoriesRepository,
     ) {}
 
-    async get() {
+    async execute() {
         return await this.categoriesRepository.getCategories();
     }
 }

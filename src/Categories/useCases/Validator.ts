@@ -13,4 +13,10 @@ export default class Validator {
         }
         return true;
     }
+
+    static validateId(id: string) {
+        if (Number(id) <= 0) {
+            throw new Error('Invalid ID!');
+        }
+    }
 }

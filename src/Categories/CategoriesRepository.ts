@@ -15,14 +15,13 @@ export default class CategoriesRepository {
 
     async createCategory(category: Category) {
         const query = 'INSERT INTO category (name, description, type, color) VALUES (?, ?, ?, ?)';
-        const values = [category.getName(), category.getdescription(), category.getType(), category.getColor()];
-        const result = await this.database.insert(query, values);
+        const values = [category.getName(), category.getDescription(), category.getType(), category.getColor()];
+        const result = await this.database.execute(query, values);
 
         if (result.affectedRows > 0) {
             return {
-                id: result.insertId,
                 name: category.getName(),
-                description: category.getdescription(),
+                description: category.getDescription(),
                 type: category.getType(),
                 color: category.getColor(),
             };
@@ -33,7 +32,7 @@ export default class CategoriesRepository {
     async deleteCategory(id: number) {
         const query = 'DELETE FROM category WHERE id = ?';
         const values = [id];
-        const result = await this.database.delete(query, values);
+        const result = await this.database.execute(query, values);
 
         if (result.affectedRows > 0) {
             return {
@@ -41,5 +40,21 @@ export default class CategoriesRepository {
             };
         }
         throw new Error('Failed to delete category');
+    }
+
+    async updateCategory(id: number, category: Category) {
+        const query = "UPDATE category SET name = ?, type = ?, description = ?, color = ? WHERE id = ?";
+        const params = [category.getName(), category.getType(), category.getDescription(), category.getColor(), id];
+        const result = await this.database.execute(query, params);
+        
+        if (result.affectedRows > 0) {
+            return {
+                name: category.getName(),
+                description: category.getDescription(),
+                type: category.getType(),
+                color: category.getColor()
+            };
+        }
+        throw new Error('Failed to update category');
     }
 }

@@ -8,6 +8,7 @@ import MySQLDatabase from './Database/MySQLDatabase';
 import CreateCategory from './Categories/useCases/CreateCategory';
 import GetCategories from './Categories/useCases/GetCategories';
 import DeleteCategory from './Categories/useCases/DeleteCategory';
+import UpdateCategory from './Categories/useCases/UpdateCategory';
 
 const services = [
   CategoriesService,
@@ -16,7 +17,8 @@ const services = [
 const useCases = [
   GetCategories,
   CreateCategory,
-  DeleteCategory
+  DeleteCategory,
+  UpdateCategory
 ];
 
 const repositories = [

@@ -21,7 +21,7 @@ export default class Category {
         return this.name;
     }
 
-    getdescription(): string {
+    getDescription(): string {
         return this.description;
     }
 

@@ -32,24 +32,4 @@ export default class MySQLDatabase {
             connection.release();
         }
     }
-
-    public async insert(query: string, params: any[] = []): Promise<ResultSetHeader> {
-        const connection = await this.getConnection();
-        try {
-            const [results] = await connection.execute<ResultSetHeader>(query, params);
-            return results;
-        } finally {
-            connection.release();
-        }
-    }
-
-    public async delete(query: string, params: any[] = []): Promise<ResultSetHeader> {
-        const connection = await this.getConnection();
-        try {
-            const [results] = await connection.execute<ResultSetHeader>(query, params);
-            return results;
-        } finally {
-            connection.release();
-        }
-    }
 }

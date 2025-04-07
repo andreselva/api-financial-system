@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
 import CategoriesService from "./CategoriesService";
 import CategoryDTO from "./CategoryDTO";
 
@@ -6,9 +6,7 @@ import CategoryDTO from "./CategoryDTO";
 export default class CategoriesController {
     constructor(
         private readonly categoriesService: CategoriesService,
-    ) {
-
-    }
+    ) {}
 
     @Get()
     async getCategories() {
@@ -23,5 +21,14 @@ export default class CategoriesController {
     @Delete(':id')
     async deleteCategory(@Param('id') id: string) {
         return await this.categoriesService.deleteCategory(id);
+    }
+
+    @Put(':id')
+    async updateCategory(
+        @Param('id') id: string,
+        @Body() category: CategoryDTO
+    ) {
+        console.log("Informações recebidas:", category);
+        return await this.categoriesService.updateCategory(id, category);
     }
 }

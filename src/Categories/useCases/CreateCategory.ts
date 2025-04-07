@@ -10,7 +10,7 @@ export default class CreateCategory {
         private readonly repository: CategoriesRepository
     ) {}
 
-    async create(category: CategoryDTO) {
+    async execute(category: CategoryDTO) {
         Validator.validate(category);
         const entity = Category.fromDTO(category);
         return await this.repository.createCategory(entity);
