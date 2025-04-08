@@ -20,6 +20,7 @@ export default class CategoriesRepository {
 
         if (result.affectedRows > 0) {
             return {
+                id: result.insertId,
                 name: category.getName(),
                 description: category.getDescription(),
                 type: category.getType(),

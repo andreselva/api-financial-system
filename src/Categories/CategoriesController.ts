@@ -24,11 +24,7 @@ export default class CategoriesController {
     }
 
     @Put(':id')
-    async updateCategory(
-        @Param('id') id: string,
-        @Body() category: CategoryDTO
-    ) {
-        console.log("Informações recebidas:", category);
+    async updateCategory(@Param('id') id: string, @Body() category: CategoryDTO) {
         return await this.categoriesService.updateCategory(id, category);
     }
 }

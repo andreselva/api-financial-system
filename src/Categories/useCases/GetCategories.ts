@@ -8,6 +8,8 @@ export default class GetCategories {
     ) {}
 
     async execute() {
-        return await this.categoriesRepository.getCategories();
+        const result = await this.categoriesRepository.getCategories();
+        console.log(result);
+        return result;
     }
 }
